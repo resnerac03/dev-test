@@ -1,21 +1,31 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
-var expressValidator = require('express-validator');
-var flash = require('connect-flash');
-var session = require('express-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
+var express           = require('express');
+var path              = require('path');
+var cookieParser      = require('cookie-parser');
+var bodyParser        = require('body-parser');
+var exphbs            = require('express-handlebars');
+var expressValidator  = require('express-validator');
+var flash             = require('connect-flash');
+var session           = require('express-session');
+var passport          = require('passport');
+var LocalStrategy     = require('passport-local').Strategy;
+var mongo             = require('mongodb');
+var mongoose          = require('mongoose');
+
+
+
 
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
+
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var manageUsers = require('./routes/manage-user');
+
+
+
 
 // Init App
 var app = express();
@@ -25,13 +35,22 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', exphbs({defaultLayout:'layout',extname: '.html'}));
 app.set('view engine', '.html');
 
+
+
+
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
+
+
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 
 // Express Session
 app.use(session({
@@ -39,6 +58,9 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+
+
+
 
 // Passport init
 app.use(passport.initialize());
@@ -78,6 +100,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/', manageUsers);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

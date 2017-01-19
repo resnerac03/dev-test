@@ -7,9 +7,7 @@ Router
 	.get('/', isLoggedIn, function(req, res){
 		res.render('index');
 	})
-
-	.get('/manage-user', isLoggedIn, function(req,res){
-		res.render('register');
-	})
+	
+	
 
 module.exports = Router;

@@ -6,7 +6,13 @@ var User = require('../models/user');
 
 
 // Register User
-router.post('/register', function(req, res){
+
+router
+	.get('/register',isLoggedIn, function(req,res){
+		res.render('register');
+	})
+
+	.post('/register',isLoggedIn, function(req, res){
 	var name = req.body.name;
 	var email = req.body.email;
 	var username = req.body.username;
@@ -44,4 +50,8 @@ router.post('/register', function(req, res){
 
 		res.redirect('/users/login');
 	}
-});
+})
+
+	
+
+	module.exports = router;
