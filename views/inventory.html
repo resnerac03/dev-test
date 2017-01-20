@@ -1,0 +1,47 @@
+<div class="inventory-panel">
+	<div class="inventory-form">
+	{{{inventoryFormShow methodStatus putData.0._id}}}
+		
+			Item Number:<br>
+			<input type="text" name="itemNumber" value="{{putData.0.no}}">
+			<br>
+			Item Name:<br>
+			<input type="text" name="itemName" value="{{putData.0.name}}">
+			<br>
+			Item Description:<br>
+			<input type="text" name="itemDescription" value="{{putData.0.description}}">
+			<br>
+			Quantity:<br>
+			<input type="text" name="itemQuantity" value="{{putData.0.quantity}}">
+			<br><br>
+			<a type="button" class="btn btn-danger" href="/inventory">Cancel</a>
+			<input type="submit" class="btn btn-default" value="Submit">
+		</form>
+	</div>
+	{{#if methodStatus}}
+	<div class="inventory-display">
+		<h2>Inventory</h2>
+		<button class='btn btn-primary' id="addInventory">Add</button>
+		<table class="table-striped" style="width:100%;">
+			<tr>
+				<th>Item No.</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Qty.</th>
+				<th>Action</th>
+			</tr>
+			{{#each Inventory}}
+			<tr>
+				<th>{{this.no}}</th>
+				<th>{{this.name}}</th>
+				<th>{{this.description}}</th>
+				<th>{{this.quantity}}</th>
+				<th><a type='button' href="/inventory/{{this._id}}">update</a>
+					<a type='button' href="/inventory/delete/{{this._id}}">delete</a>
+				</th>
+			</tr>
+			{{/each}}
+		</table>
+	</div>
+	{{/if}}
+</div>

@@ -23,6 +23,7 @@ var db = mongoose.connection;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var manageUsers = require('./routes/manage-user');
+var inventory = require('./routes/inventory');
 
 
 
@@ -32,7 +33,20 @@ var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('.html', exphbs({defaultLayout:'layout',extname: '.html'}));
+var hbs = exphbs.create({
+    defaultLayout:'layout',
+    extname: '.html',
+    helpers: {
+        inventoryFormShow: function(status,id){
+          if(!status){
+              return '<form method="POST" action="/inventory/'+id+'">';
+          } else {
+              return '<form id="inventoryForm" method="POST" action="/inventory">';
+          }
+        }
+    }
+})
+app.engine('.html', hbs.engine);
 app.set('view engine', '.html');
 
 
@@ -101,6 +115,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/', manageUsers);
+app.use('/',inventory);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
