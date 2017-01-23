@@ -1,0 +1,335 @@
+<div class="app app-default">
+    <aside class="app-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a class="sidebar-brand" href="index.html"><img src="./images/AlMansoori.gif" style="width:100%;"></a>
+            </a>
+            <button type="button" class="sidebar-toggle">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Manage Inventory</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Manage Inventory</li>
+                            <li><a href="/inventory">Manage Inventory</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Calibration Certificate</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Calibration Certificate</li>
+                            <li><a href="f-1267-calibration">F 1267 Calibration Certificate</a></li>
+                            <li><a href="f-1270-calibration">F 1270 Calibration</a></li>
+                            <li><a href="f-491-calibration">F 491 CALIBRATION CERTIFICATE FORMAT GENERAL</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Equipment In and Out</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Equipment</li>
+                            <li><a href="customer">Add Customer</a></li>
+                            <li><a href="equipment">Generate Equipment</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Job request for repairing</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i>Job Request</li>
+                            <li><a href="job-request">Manage Job Request</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Manage Users</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Users</li>
+                            <li><a href="/register">Manage Users</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+        <div class="dropdown-background">
+            <div class="bg"></div>
+        </div>
+        <div class="dropdown-container">
+            {{list}}
+        </div>
+    </script>
+    <div class="app-container">
+        <nav class="navbar navbar-default" id="navbar">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse in">
+                    <ul class="nav navbar-nav navbar-mobile">
+                        <li>
+                            <button type="button" class="sidebar-toggle">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="navbar-toggle">
+                                <img class="profile-img" src="./images/profile.png">
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="navbar-title">Dashboard and Notifications</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown profile">
+                            <a href="/html/pages/profile.html" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="profile-img" src="./images/profile.png">
+                                <div class="title">Profile</div>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="profile-info">
+                                    <h4 class="username">Scott White</h4>
+                                </div>
+                                <ul class="action">
+                                    <li>
+                                        <a href="#">
+                  Profile
+                </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                  Setting
+                </a>
+                                    </li>
+                                    <li>
+                                        <a href="/users/logout">
+                  Logout
+                </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <div class="btn-floating" id="help-actions">
+                <div class="btn-bg"></div>
+                <button type="button" class="btn btn-default btn-toggle" data-toggle="toggle" data-target="#help-actions">
+                    <i class="icon fa fa-plus"></i>
+                    <span class="help-text">Shortcut</span>
+                </button>
+                <div class="toggle-content">
+                    <ul class="actions">
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Issues</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Inventory Form
+                        </div>
+                        <div class="card-body">
+                            <form class="form form-horizontal">
+                                <div class="section">
+                                    <div class="section-body">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">JR # :</label>
+                                            <div class="col-md-2">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <label class="col-md-1 control-label">Date :</label>
+                                            <div class="col-md-2">
+                                                <input type="date" class="form-control" placeholder="">
+                                            </div>
+                                            <label class="col-md-1 control-label">Department</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Unit Number</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <label class="col-md-2 control-label">Unit Description</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Cost Code</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Date In/Time In</label>
+                                            <div class="col-md-3">
+                                                <input type="datetime-local" class="form-control" placeholder="">
+                                            </div>
+                                            <label class="col-md-3 control-label">Date Out/Time Out</label>
+                                            <div class="col-md-3">
+                                                <input type="datetime-local" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Defect Description</label>
+                                            <div class="col-md-9">
+                                                <textarea name="name" rows="3" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Job Card No.</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <label class="col-md-3 control-label">Job assigned to</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Detail of the repair performed</label>
+                                            <div class="col-md-9">
+                                                <textarea name="name" rows="3" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3 col-md-offset-3">
+                                                <label class="col-md-12 control-label">JR Raised by</label>
+                                            </div>
+                                            <div class="col-md-3 col-md-offset-1">
+                                                <label class="col-md-12 control-label">Certified as Job Completed</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4 col-md-offset-3">
+                                                <label>Signature :</label>
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Signature :</label>
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4 col-md-offset-3">
+                                                <label>Name :</label>
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Name :</label>
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Unit Received by :</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <label class="col-md-1 control-label">Name :</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-footer">
+                                    <div class="form-group">
+                                        <div class="col-md-9 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-default">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <span>Inventory List</span>
+                            <i style="margin-left: 15px;margin-top: 3px;" class="fa fa-print"></i>
+                        </div>
+                        <div class="card-body no-padding">
+                            <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Item #</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>A1232</td>
+                                        <td>Sample Item</td>
+                                        <td>Description Sample</td>
+                                        <td>61</td>
+                                        <td><i class="fa fa-edit"></i>&nbsp&nbsp&nbsp&nbsp<i class="fa fa-remove"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="app-footer">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="footer-copyright">
+                            Copyright © 2016.
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/js/vendor.js"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+</body>
+
+</html>

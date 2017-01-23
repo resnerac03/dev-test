@@ -1,29 +1,214 @@
-<h2 class="page-header">Register</h2>
-{{#if errors}}
-      {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-      {{/each}}
-{{/if}}
-<form method="post" action="/register">
-   <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" placeholder="Name" name="name">
-  </div>
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" placeholder="Username" name="username">
-  </div>
-   <div class="form-group">
-    <label>Email</label>
-    <input type="email" class="form-control" placeholder="Email" name="email">
-  </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" placeholder="Password" name="password">
-  </div>
-  <div class="form-group">
-    <label>Confirm Password</label>
-    <input type="password" class="form-control" placeholder="Password" name="password2">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<div class="app app-default">
+    <aside class="app-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a class="sidebar-brand" href="index.html"><img src="./images/AlMansoori.gif" style="width:100%;"></a>
+            </a>
+            <button type="button" class="sidebar-toggle">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Manage Inventory</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Manage Inventory</li>
+                            <li><a href="/inventory">Manage Inventory</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Calibration Certificate</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Calibration Certificate</li>
+                            <li><a href="f-1267-calibration">F 1267 Calibration Certificate</a></li>
+                            <li><a href="f-1270-calibration">F 1270 Calibration</a></li>
+                            <li><a href="f-491-calibration">F 491 CALIBRATION CERTIFICATE FORMAT GENERAL</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Equipment In and Out</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Equipment</li>
+                            <li><a href="customer">Add Customer</a></li>
+                            <li><a href="equipment">Generate Equipment</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Job request for repairing</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i>Job Request</li>
+                            <li><a href="job-request">Manage Job Request</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Manage Users</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Users</li>
+                            <li><a href="/register">Manage Users</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+        <div class="dropdown-background">
+            <div class="bg"></div>
+        </div>
+        <div class="dropdown-container">
+            {{list}}
+        </div>
+    </script>
+    <div class="app-container">
+        <nav class="navbar navbar-default" id="navbar">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse in">
+                    <ul class="nav navbar-nav navbar-mobile">
+                        <li>
+                            <button type="button" class="sidebar-toggle">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="navbar-toggle">
+                                <img class="profile-img" src="./images/profile.png">
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="navbar-title">Dashboard and Notifications</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown profile">
+                            <a href="/html/pages/profile.html" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="profile-img" src="./images/profile.png">
+                                <div class="title">Profile</div>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="profile-info">
+                                    <h4 class="username">Scott White</h4>
+                                </div>
+                                <ul class="action">
+                                    <li>
+                                        <a href="#">
+                  Profile
+                </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                  Setting
+                </a>
+                                    </li>
+                                    <li>
+                                        <a href="/users/logout">
+                  Logout
+                </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <div class="btn-floating" id="help-actions">
+                <div class="btn-bg"></div>
+                <button type="button" class="btn btn-default btn-toggle" data-toggle="toggle" data-target="#help-actions">
+                    <i class="icon fa fa-plus"></i>
+                    <span class="help-text">Shortcut</span>
+                </button>
+                <div class="toggle-content">
+                    <ul class="actions">
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Issues</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Registration Form
+                        </div>
+                        <div class="card-body">
+                            <div class="app-form">
+                               
+                                {{#if errors}} {{#each errors}}
+                                <div class="alert alert-danger">{{msg}}</div>
+                                {{/each}} {{/if}}
+                                <form method="post" action="/register">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" placeholder="Name" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" placeholder="Username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" placeholder="Email" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password2">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="app-footer">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="footer-copyright">
+                            Copyright © 2016.
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+   

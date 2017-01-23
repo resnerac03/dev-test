@@ -1,47 +1,266 @@
-<div class="inventory-panel">
-	<div class="inventory-form">
-	{{{inventoryFormShow methodStatus putData.0._id}}}
-		
-			Item Number:<br>
-			<input type="text" name="itemNumber" value="{{putData.0.no}}">
-			<br>
-			Item Name:<br>
-			<input type="text" name="itemName" value="{{putData.0.name}}">
-			<br>
-			Item Description:<br>
-			<input type="text" name="itemDescription" value="{{putData.0.description}}">
-			<br>
-			Quantity:<br>
-			<input type="text" name="itemQuantity" value="{{putData.0.quantity}}">
-			<br><br>
-			<a type="button" class="btn btn-danger" href="/inventory">Cancel</a>
-			<input type="submit" class="btn btn-default" value="Submit">
-		</form>
-	</div>
-	{{#if methodStatus}}
-	<div class="inventory-display">
-		<h2>Inventory</h2>
-		<button class='btn btn-primary' id="addInventory">Add</button>
-		<table class="table-striped" style="width:100%;">
-			<tr>
-				<th>Item No.</th>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Qty.</th>
-				<th>Action</th>
-			</tr>
-			{{#each Inventory}}
-			<tr>
-				<th>{{this.no}}</th>
-				<th>{{this.name}}</th>
-				<th>{{this.description}}</th>
-				<th>{{this.quantity}}</th>
-				<th><a type='button' href="/inventory/{{this._id}}">update</a>
-					<a type='button' href="/inventory/delete/{{this._id}}">delete</a>
-				</th>
-			</tr>
-			{{/each}}
-		</table>
-	</div>
-	{{/if}}
+<div class="app app-default">
+    <aside class="app-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a class="sidebar-brand" href="index.html"><img src="./images/AlMansoori.gif" style="width:100%;"></a>
+            </a>
+            <button type="button" class="sidebar-toggle">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Manage Inventory</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Manage Inventory</li>
+                            <li><a href="/inventory">Manage Inventory</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Calibration Certificate</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Calibration Certificate</li>
+                            <li><a href="f-1267-calibration">F 1267 Calibration Certificate</a></li>
+                            <li><a href="f-1270-calibration">F 1270 Calibration</a></li>
+                            <li><a href="f-491-calibration">F 491 CALIBRATION CERTIFICATE FORMAT GENERAL</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Equipment In and Out</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Equipment</li>
+                            <li><a href="customer">Add Customer</a></li>
+                            <li><a href="equipment">Generate Equipment</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Generate Job request for repairing</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i>Job Request</li>
+                            <li><a href="job-request">Manage Job Request</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <div class="icon">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Manage Users</div>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Users</li>
+                            <li><a href="/register">Manage Users</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+        <div class="dropdown-background">
+            <div class="bg"></div>
+        </div>
+        <div class="dropdown-container">
+            {{list}}
+        </div>
+    </script>
+    <div class="app-container">
+        <nav class="navbar navbar-default" id="navbar">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse in">
+                    <ul class="nav navbar-nav navbar-mobile">
+                        <li>
+                            <button type="button" class="sidebar-toggle">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="navbar-toggle">
+                                <img class="profile-img" src="./images/profile.png">
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="navbar-title">Dashboard and Notifications</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown profile">
+                            <a href="/html/pages/profile.html" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="profile-img" src="./images/profile.png">
+                                <div class="title">Profile</div>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="profile-info">
+                                    <h4 class="username">Scott White</h4>
+                                </div>
+                                <ul class="action">
+                                    <li>
+                                        <a href="#">
+                  Profile
+                </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                  Setting
+                </a>
+                                    </li>
+                                    <li>
+                                        <a href="/users/logout">
+                  Logout
+                </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="btn-floating" id="help-actions">
+            <div class="btn-bg"></div>
+            <button type="button" class="btn btn-default btn-toggle" data-toggle="toggle" data-target="#help-actions">
+                <i class="icon fa fa-plus"></i>
+                <span class="help-text">Shortcut</span>
+            </button>
+            <div class="toggle-content">
+                <ul class="actions">
+                    <li><a href="#">Website</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Issues</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        Inventory Form
+                    </div>
+                    <div class="card-body">
+                        {{{inventoryFormShow methodStatus putData.0._id}}}
+                        <div class="section">
+                            <div class="section-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Item #</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" placeholder="" name="itemNumber" value="{{putData.0.no}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="itemName" value="{{putData.0.name}}" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Description</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="itemDescription" value="{{putData.0.description}}" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Quantity</label>
+                                    <div class="col-md-9">
+                                        <input type="number" name="itemQuantity" value="{{putData.0.quantity}}" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <div class="form-group">
+                                <div class="col-md-9 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <a type="button" class="btn btn-default" href="/inventory">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#if methodStatus}}
+        <div class="row">
+        <button class='btn btn-primary' id="addInventory">Add</button>
+            <div class="col-xs-12">
+
+                <div class="card">
+                    <div class="card-header">
+
+                        <span>Inventory List</span>
+                        
+                        <i style="margin-left: 15px;margin-top: 3px;" class="fa fa-print"></i>
+                    </div>
+                    <div class="card-body no-padding">
+                        <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Item #</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Qty</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each Inventory}}
+                                <tr>
+                                    <td>{{this.no}}</td>
+                                    <td>{{this.name}}</td>
+                                    <td>{{this.description}}</td>
+                                    <td>{{this.quantity}}</td>
+                                  
+                                        <td>
+                                            <a href="/inventory/{{this._id}}"><i class="fa fa-edit"></i></a> &nbsp&nbsp&nbsp&nbsp
+                                            <a href="/inventory/delete/{{this._id}}"><i class="fa fa-remove"></i></a>
+                                        </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        <footer class="app-footer">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="footer-copyright">
+                        Copyright © 2016.
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
