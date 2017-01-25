@@ -1,0 +1,9 @@
+*~
+*.swp
+*.swo
+*.log
+*.pyc
+.DS_Store
+
+
+node_modules/
