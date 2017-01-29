@@ -1,12 +1,41 @@
-<h2 class="page-header">Account Login</h2>
-<form method="post" action="/users/login">
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" name="username" placeholder="Username">
-  </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<div class="app app-default">
+    <div class="app-container app-login">
+        <div class="flex-center">
+            <div class="app-header"></div>
+            <div class="app-body">
+                <div class="loader-container text-center">
+                    <div class="icon">
+                        <div class="sk-folding-cube">
+                            <div class="sk-cube1 sk-cube"></div>
+                            <div class="sk-cube2 sk-cube"></div>
+                            <div class="sk-cube4 sk-cube"></div>
+                            <div class="sk-cube3 sk-cube"></div>
+                        </div>
+                    </div>
+                    <div class="title">Logging in...</div>
+                </div>
+                <div class="app-block">
+                    <div class="app-form">
+                        <div class="form-header">
+                            <div class="app-brand"><span class="highlight" style="color:orange;">AlMansoori</span> Login</div>
+                        </div>
+                        <form method="post" action="/login">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="app-footer">
+            </div>
+        </div>
+    </div>
+</div>

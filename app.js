@@ -10,8 +10,7 @@ var passport          = require('passport');
 var LocalStrategy     = require('passport-local').Strategy;
 var mongo             = require('mongodb');
 var mongoose          = require('mongoose');
-
-
+var fetchFiles        = require('./helpers').fetchFiles;
 
 
 mongoose.connect('mongodb://localhost/loginapp');
@@ -20,16 +19,18 @@ var db = mongoose.connection;
 
 
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var manageUsers = require('./routes/manage-user');
-var inventory = require('./routes/inventory');
+// var routes = require('./routes/index');
+// var users = require('./routes/users');
+// var manageUsers = require('./routes/manage-user');
+// var inventory = require('./routes/inventory');
+// var f_1267 = require('./routes/f-1267');
 
 
 
 
 // Init App
-var app = express();
+var app   = express();
+var route = require('./routes');
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -37,13 +38,6 @@ var hbs = exphbs.create({
     defaultLayout:'layout',
     extname: '.html',
     helpers: {
-        inventoryFormShow: function(status,id){
-          if(!status){
-              return '/inventory/'+id+'">';
-          } else {
-              return '<form id="inventoryForm" method="POST" action="/inventory">';
-          }
-        }
     }
 })
 app.engine('.html', hbs.engine);
@@ -110,12 +104,17 @@ app.use(function (req, res, next) {
   next();
 });
 
+fetchFiles(__dirname + '/routes/', function(name){
+  // console.log('wew',__dirname+'/routes')
+    // console.log(route[name]);
+    app.use('/', route[name]);
+})
 
-
-app.use('/', routes);
-app.use('/users', users);
-app.use('/', manageUsers);
-app.use('/',inventory);
+// app.use('/',f_1267);
+// app.use('/', routes);
+// app.use('/users', users);
+// app.use('/', manageUsers);
+// app.use('/',inventory);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

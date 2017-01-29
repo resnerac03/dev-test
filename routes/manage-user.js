@@ -46,7 +46,7 @@ Router
 
 			req.flash('success_msg', 'You are registered and can now login');
 
-			res.redirect('/users/login');
+			res.redirect('/login');
 		}
 	})
 

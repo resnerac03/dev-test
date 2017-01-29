@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var Router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var isLoggedIn = require('../helpers/is-logged-in');
@@ -12,7 +12,7 @@ var User = require('../models/user');
 // });
 
 // Login
-router.get('/login', function(req, res){
+Router.get('/login', function(req, res){
 	if(!req.isAuthenticated()){
 		res.render('login');
 	} else {
@@ -53,8 +53,8 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-router.post('/login',
-  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+Router.post('/login',
+  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login',failureFlash: true}),
   function(req, res) {
     res.redirect('/');
   });
@@ -67,12 +67,12 @@ router.post('/login',
 // 	res.redirect('/');
 // });
 
-router.get('/logout', function(req, res){
+Router.get('/logout', function(req, res){
 	req.logout();
 
 	req.flash('success_msg', 'You are logged out');
 
-	res.redirect('/users/login');
+	res.redirect('/login');
 });
 
-module.exports = router;
+module.exports = Router;
