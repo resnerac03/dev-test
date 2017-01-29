@@ -18,7 +18,8 @@ var jobRequestSchema = mongoose.Schema({
 	raised_name: {type: String},
 	completed_signature: {type: String},
 	completed_name: {type: String},
-	unit_recieved: {type: String}
+	unit_recieved_by: {type: String},
+	unit_recieved_name: {type: String}
 });
 
 var JobRequest = mongoose.model('JobRequest', jobRequestSchema);
