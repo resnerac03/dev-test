@@ -25,5 +25,8 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
