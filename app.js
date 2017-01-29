@@ -39,7 +39,7 @@ var hbs = exphbs.create({
     helpers: {
         inventoryFormShow: function(status,id){
           if(!status){
-              return '<form method="POST" action="/inventory/'+id+'">';
+              return '/inventory/'+id+'">';
           } else {
               return '<form id="inventoryForm" method="POST" action="/inventory">';
           }

@@ -46,9 +46,9 @@ Router
 
 		inventory
 			.then(function(dataPut){
-				dataPut.name = req.body.itemName;
-				dataPut.description = req.body.itemDescription;
-				dataPut.quantity = req.body.itemQuantity;
+				dataPut.name = req.body.putItemName;
+				dataPut.description = req.body.putItemDescription;
+				dataPut.quantity = req.body.putItemQuantity;
 
 				dataPut.save();
 			})
