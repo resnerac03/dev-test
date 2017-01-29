@@ -8,24 +8,15 @@ var flash             = require('connect-flash');
 var session           = require('express-session');
 var passport          = require('passport');
 var LocalStrategy     = require('passport-local').Strategy;
-var mongo             = require('mongodb');
+// var mongo             = require('mongodb');
+var MongoStore        = require('connect-mongo')(session);
 var mongoose          = require('mongoose');
 var fetchFiles        = require('./helpers').fetchFiles;
 
 
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/loginapp');
-var db = mongoose.connection;
-
-
-
-
-// var routes = require('./routes/index');
-// var users = require('./routes/users');
-// var manageUsers = require('./routes/manage-user');
-// var inventory = require('./routes/inventory');
-// var f_1267 = require('./routes/f-1267');
-
-
+// var db = mongoose.connection;
 
 
 // Init App
@@ -61,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Express Session
 app.use(session({
     secret: 'secret',
+    store: new MongoStore({ url: 'mongodb://localhost/loginapp' }),
     saveUninitialized: true,
     resave: true
 }));
@@ -103,16 +95,8 @@ app.use(function (req, res, next) {
 });
 
 fetchFiles(__dirname + '/routes/', function(name){
-  // console.log('wew',__dirname+'/routes')
-    // console.log(route[name]);
     app.use('/', route[name]);
 })
-
-// app.use('/',f_1267);
-// app.use('/', routes);
-// app.use('/users', users);
-// app.use('/', manageUsers);
-// app.use('/',inventory);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
